@@ -687,11 +687,10 @@ section {
     }
 }
 
-@media (max-width: 768px) {
-    .hero {
-        padding-top: 100px; /* Adjust value so your name is fully visible */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
     }
-}
 
 
     .section-title {
