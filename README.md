@@ -19,5 +19,4 @@ A modern, responsive, and interactive personal portfolio website built with **HT
 - **Font Awesome** – Icons
 - **Google Fonts** – Typography
 
-## 📂 Project Structure
 
