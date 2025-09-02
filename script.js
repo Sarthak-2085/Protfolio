@@ -1,3 +1,5 @@
+emailjs.init('2Q07fvn2GVX1q04aC'); // Replace with your EmailJS user ID
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -77,18 +79,44 @@ document.querySelector('.contact-form').addEventListener('submit', function(e) {
     }
     
     // Simulate form submission
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-    
-    setTimeout(() => {
-        alert('Thank you for your message! I\'ll get back to you soon.');
-        this.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
+
+    document.querySelector('.contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = this.querySelector('input[type="text"]').value;
+        const email = this.querySelector('input[type="email"]').value;
+        const message = this.querySelector('textarea').value;
+
+        if (!name || !email || !message) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+
+        // ACTUAL EmailJS send code
+        emailjs.send('service_a1kzmmf', 'template_an5bk94', {
+            name: name,
+            email: email,
+            message: message,
+            portfolio: "https://yourportfolio.com"
+        })
+            .then(() => {
+                alert('Thank you for your message! You will receive a reply email soon.');
+                this.reset();
+            }, (error) => {
+                alert('Failed to send message. Please try again.');
+                console.error('EmailJS error:', error);
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+    });
 });
 
 // Skill Tags Animation
@@ -220,3 +248,4 @@ createScrollProgress();
 //     console.error('EmailJS error:', error);
 //   });
 // });
+
