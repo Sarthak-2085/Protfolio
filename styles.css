@@ -330,10 +330,10 @@ section {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.work-card.featured {
+/* .work-card.featured {
     border: 1px solid var(--primary-color);
     background: linear-gradient(135deg, var(--bg-card) 0%, rgba(99, 102, 241, 0.1) 100%);
-}
+} */
 
 .work-header h3 {
     font-size: 1.3rem;
@@ -831,3 +831,4 @@ section {
         font-size: 1rem;
     }
 }
+
